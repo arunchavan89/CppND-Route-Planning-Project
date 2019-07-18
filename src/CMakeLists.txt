@@ -13,11 +13,11 @@ file(GLOB project_SRCS *.cpp *.h)
 #
 add_executable(${project_BIN} ${project_SRCS})
 
-target_link_libraries(${project_BIN}
-    PRIVATE io2d::io2d
-    PUBLIC pugixml
-)
-
+#target_link_libraries(${project_BIN}
+#    PRIVATE io2d::io2d
+#    PUBLIC pugixml
+#)
+target_link_libraries(${PROJECT_ID} io2d pugixml )
 #
 # create a library for unit tests
 #
