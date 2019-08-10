@@ -23,10 +23,7 @@ public:
         bool visited = false;
         std::vector<Node*> neighbors;
 
-        float distance(Node obj_node) const
-        {
-            return std::sqrt(std::pow((x - obj_node.x), 2) + std::pow((y - obj_node.y), 2));
-        }
+        float distance(Node obj_node) const;       
 
         void FindNeighbors();
 

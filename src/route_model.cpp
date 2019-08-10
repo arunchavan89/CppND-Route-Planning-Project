@@ -35,6 +35,7 @@ RouteModel::Node* RouteModel::Node::FindNeighbor(std::vector<int> node_indices)
 {
     Node* closest_node = nullptr;
     Node node;
+
     for (int node_index : node_indices)
     {
         node = parent_model->SNodes()[node_index];
@@ -70,6 +71,7 @@ RouteModel::Node& RouteModel::FindClosestNode(float x, float y)
     float min_distance = std::numeric_limits<float>::max();
     float dist;
     int closest_idx;
+
     for (const Model::Road& road : Roads())
     {
         if (road.type != Model::Road::Type::Footway)
@@ -86,4 +88,11 @@ RouteModel::Node& RouteModel::FindClosestNode(float x, float y)
         }
     }
     return SNodes()[closest_idx];
+}
+
+float RouteModel::Node::distance(RouteModel::Node obj_node) const
+{
+
+    return std::sqrt(std::pow((this->x - obj_node.x), 2.0f) + std::pow((this->y - obj_node.y), 2.0f));
+
 }
