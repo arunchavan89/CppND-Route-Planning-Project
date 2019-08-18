@@ -12,6 +12,13 @@ RouteModel::RouteModel(const std::vector<std::byte>& xml) : Model(xml)
     CreateNodeToRoadHashmap();
 }
 
+float RouteModel::Node::distance(RouteModel::Node obj_node) const
+{
+
+    return std::sqrt(std::pow((this->x - obj_node.x), 2.0f) + std::pow((this->y - obj_node.y), 2.0f));
+
+}
+
 void RouteModel::CreateNodeToRoadHashmap()
 {
     for (const Model::Road& road : Roads())
@@ -90,9 +97,3 @@ RouteModel::Node& RouteModel::FindClosestNode(float x, float y)
     return SNodes()[closest_idx];
 }
 
-float RouteModel::Node::distance(RouteModel::Node obj_node) const
-{
-
-    return std::sqrt(std::pow((this->x - obj_node.x), 2.0f) + std::pow((this->y - obj_node.y), 2.0f));
-
-}
